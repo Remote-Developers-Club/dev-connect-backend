@@ -4,9 +4,6 @@ Open source platform to connect developers remotely
 
 
 
-
-
-
 Inspirational Site 
 ==================
 Stackoverflow 
