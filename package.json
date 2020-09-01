@@ -1,0 +1,28 @@
+{
+  "name": "dev-connect-backend",
+  "version": "1.0.0",
+  "description": "A open source remote onboarding for developers",
+  "main": "server-local.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Remote-Developers-Club/dev-connect-backend.git"
+  },
+  "keywords": [
+    "Open",
+    "source",
+    "remote-developers"
+  ],
+  "author": "open source",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Remote-Developers-Club/dev-connect-backend/issues"
+  },
+  "homepage": "https://github.com/Remote-Developers-Club/dev-connect-backend#readme",
+  "devDependencies": {
+    "express": "^4.17.1"
+  }
+}
