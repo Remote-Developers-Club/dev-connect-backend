@@ -1,6 +1,11 @@
+const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
-const path = require("path");
+
+const viewRoutes = require('./routes/viewRoutes') 
+
+
+
 const jsonParser = bodyParser.json();
 const app = express();
 
@@ -14,3 +19,5 @@ app.listen(PORT, () => {
   console.log(`App is runing on ${PORT}`);
 });
 
+
+app.use('/', viewRoutes)
