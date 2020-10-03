@@ -3,21 +3,20 @@
  * Learn, expand and Share knowledge
  */
 
-const path = require("path");
+const path = require('path');
 const express = require("express");
-const connectDB = require('./config/db')
-// const bodyParser = require('bodyParse')
 const app = express();
+const connectDB = require('./config/db');
 
 
-
+// Connection to database 
 connectDB();
 
 /**
  * Import routes from routes 
  */
-const posts = require('./routes/posts')
-const users = require('./routes/users');
+// const posts = require('./routes/posts')
+// const users = require('./routes/users');
 
 
 /**
@@ -40,8 +39,8 @@ app.use(bodyParser.urlencoded({
 /**
  * Routing pages in
  */
-app.use('/api/users', users);
-app.use('/api/posts', posts);
+// app.use('/api/users', users);
+// app.use('/api/posts', posts);
 
 
 /**
