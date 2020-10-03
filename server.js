@@ -1,52 +1,67 @@
-/**
- * This is an Open source project 
- * Learn, expand and Share knowledge
- */
-
 const path = require('path');
-const express = require("express");
-const app = express();
+const express = require('express');
+const colors = require('colors');
+const dotenv = require('dotenv');
+const morgan = require('morgan');
+const helmet = require('helmet');
+const xss = require('xss-clean');
 const connectDB = require('./config/db');
+const cookieParser = require('cookie-parser');
+const fileUpload = require('express-fileupload');
+const  mongoSanitize = require('express-mongo-sanitize');
 
+//Load env vars
+dotenv.config({ path: './config/config.env' });
 
-// Connection to database 
+//Connect to database
 connectDB();
 
-/**
- * Import routes from routes 
- */
-// const posts = require('./routes/posts')
-// const users = require('./routes/users');
+// // Route Files
+// const home = require('./routes/home/index');
+// const admin = require('./routes/admin/index');
 
 
-/**
- * Configuring templating engine 
- */
-app.use(express.static(path.join(__dirname, "public")));
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs");
+const app = express();
 
+// Routing
+app.use(express.json());
+app.use(cookieParser());
 
-/**
- * Express middlewares routes
- */
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true
-}))
+if (process.env.NODE_ENV === 'development') {
+	app.use(morgan('dev'));
+}
 
+// Express fileupload
+app.use(fileUpload());
 
-/**
- * Routing pages in
- */
-// app.use('/api/users', users);
-// app.use('/api/posts', posts);
+// Sanitize data 
+app.use(mongoSanitize());
 
+//Security header
+app.use(helmet());
 
-/**
- * Starting the Server
- */
+//Prevent XSS 
+app.use(xss());
+
+// app.use(express.static(path.join(__dirname, 'public')));
+
+//Might change the template engine
+// const pug = require('pug');
+// app.engine('pug', pug());
+// app.set('view engine', 'pug');
+
+// Mount routers
+
+// app.use('/', home);
+// app.use('/admin', admin);
+
+// app.use(errorHandler);
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`App is runing on ${PORT}`);
+const server = app.listen(PORT, () => {
+	console.log(`Sever is runing in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold);
+});
+
+//Handle unhandled promise rejection
+process.on('unhandledRejection', (err, promise) => {
+	console.log(`Error : ${err.message}`.red);
 });
