@@ -9,6 +9,7 @@ const connectDB = require('./config/db');
 const cookieParser = require('cookie-parser');
 const fileUpload = require('express-fileupload');
 const  mongoSanitize = require('express-mongo-sanitize');
+const viewRoutes = require('./routes/viewRoutes') 
 
 //Load env vars
 dotenv.config({ path: './config/config.env' });
@@ -26,6 +27,9 @@ const app = express();
 // Routing
 app.use(express.json());
 app.use(cookieParser());
+app.use(express.static(path.join(__dirname, "public")));
+app.set("views", path.join(__dirname, "views"));
+app.set('view engine', 'ejs')
 
 if (process.env.NODE_ENV === 'development') {
 	app.use(morgan('dev'));
@@ -56,10 +60,15 @@ app.use(xss());
 // app.use('/admin', admin);
 
 // app.use(errorHandler);
+
 const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT, () => {
 	console.log(`Sever is runing in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold);
 });
+
+//view routes
+app.use('/', viewRoutes)
+
 
 //Handle unhandled promise rejection
 process.on('unhandledRejection', (err, promise) => {
