@@ -1,10 +1,12 @@
 
+<!-- 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
+ -->
 
 <!-- PROJECT LOGO -->
 <br />
@@ -201,6 +203,8 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
+
+<!-- 
 [contributors-shield]:
 [contributors-url]: 
 [forks-shield]: 
@@ -213,5 +217,7 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 [license-url]: 
 [linkedin-shield]: 
 [linkedin-url]: 
-[product-screenshot]: readme-image/images/screenshot.png
+[product-screenshot]: readme-image/images/screenshot.png 
+
+-->
 
