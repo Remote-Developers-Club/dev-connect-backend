@@ -213,4 +213,5 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 [license-url]: 
 [linkedin-shield]: 
 [linkedin-url]: 
-[product-screenshot]: /readme-images/images/screenshot.png
+[product-screenshot]: readme-image/images/screenshot.png
+
